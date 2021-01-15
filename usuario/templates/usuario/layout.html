@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+</head>
+<body>
+    <header>
+        <h1>Meu App</h1>
+        <nav>
+            <ul>
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'usuario:cadastrar_usuario' %}">Cadastre-se!</a></li>
+                <li><a href="{% url 'usuario:login_user' %}">Login</a></li>
+                {% endif %}
+              {% if user.is_authenticated %}  <li><a href="{% url 'usuario:logout_user' %}">Logout</a></li> {% endif %}
+            </ul>
+        </nav>
+    </header>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

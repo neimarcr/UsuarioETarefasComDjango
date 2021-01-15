@@ -1,0 +1,9 @@
+{% extends 'usuario/layout.html' %}
+
+{% block body %}
+    <form action="{% url 'usuario:cadastrar_usuario' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}

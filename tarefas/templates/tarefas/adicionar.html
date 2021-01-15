@@ -1,0 +1,15 @@
+{% extends 'tarefas/layout.html' %}
+
+{% block body %}
+    <form action="{% url 'tarefas:adicionar' %}" method="POST">
+        {% csrf_token %}
+        <!-- <label for="nome_tarefa">Título da tarefa</label>
+        <input type="text" name="nome_tarefa" id="nome_tarefa">
+        <label for="descricao_tarefa">Descrição</label>
+        <input type="text" name="descricao_tarefa" id="descricao_tarefa">
+        <label for="concluida_tarefa">Concluída?</label>
+        <input type="checkbox" name="concluida_tarefa" id="concluida_tarefa" value="True"> -->
+        {{ form }}
+        <button type="submit">Salvar tarefa</button>
+    </form>
+{% endblock %}

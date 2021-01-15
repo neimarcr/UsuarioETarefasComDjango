@@ -1,0 +1,22 @@
+{% extends 'tarefas/layout.html' %}
+
+{% block body %}
+
+<h1>Parabéns</h1>
+
+{% if lista %}
+    <ul>
+        {% for item in lista %}
+            <li>Tarefa: {{ item.nome }}</li>
+            <li>Descrição: {{ item.descricao }}</li>
+            <li>Está feita? {% if item.realizada %} Sim {% else %} Não {% endif %}</li>
+            <a href="{% url 'tarefas:editar' id_item=item.id %}">Editar</a>
+            <form action="{% url 'tarefas:deletar_tarefa' id_item=item.id %}" method="POST">{% csrf_token %}
+                <button type="submit">Excluir</button>
+            </form>
+            <hr>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

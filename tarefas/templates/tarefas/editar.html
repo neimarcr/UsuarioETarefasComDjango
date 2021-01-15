@@ -1,0 +1,12 @@
+{% extends 'tarefas/layout.html' %}
+
+{% block body %}
+
+<form action="{% url 'tarefas:editar' id_item=item.id %}" method="POST">{% csrf_token %}
+    <input type="text" name="nome" id="nome" value="{{item.nome}}"> 
+    <textarea name="descricao" id="descricao" cols="30" rows="10">{{item.descricao}}</textarea>
+    <input type="checkbox" name="realizada" id="realizada" checked>
+    <button type="submit">Editar</button>
+</form>
+
+{% endblock %}
