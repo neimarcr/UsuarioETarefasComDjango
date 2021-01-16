@@ -2,7 +2,9 @@ from django import forms
 from django.forms import widgets
 
 class UsuarioForm(forms.Form):
-    nome = forms.CharField(label="Nome", max_length=64)
+    nome = forms.CharField(label="Nome", max_length=64, error_messages={ 
+                 'required':"Please Enter your Name"
+                 })
     email = forms.EmailField(label="Email", max_length=128)
     senha = forms.CharField(label="Senha" ,widget=forms.PasswordInput, min_length=8)
     senha2 = forms.CharField(label="digite a senha novamente" ,widget=forms.PasswordInput, min_length=8)

@@ -1,9 +1,12 @@
-{% extends 'usuario/layout.html' %}
+{% extends 'layout.html' %}
 
 {% block body %}
     <form action="{% url 'usuario:cadastrar_usuario' %}" method="POST">
         {% csrf_token %}
         {{ form }}
+        {% if form.non_field_errors %}
+            <p>{{ login.non_field_errors }}</p>
+        {% endif %}
         <button type="submit">Enviar</button>
     </form>
 {% endblock %}

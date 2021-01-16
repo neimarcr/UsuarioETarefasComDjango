@@ -49,7 +49,7 @@ def login_user(request):
             else:
                 return render(request, "usuario/login.html", {
                     "form": LoginForm(),
-                    "mensagem": "Usuário não encontrado"
+                    "mensagem": "Usuário ou senha estão incorretos"
                 })
 
     return render(request, "usuario/login.html", {

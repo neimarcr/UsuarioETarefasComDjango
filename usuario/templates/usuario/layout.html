@@ -14,7 +14,10 @@
                 <li><a href="{% url 'usuario:cadastrar_usuario' %}">Cadastre-se!</a></li>
                 <li><a href="{% url 'usuario:login_user' %}">Login</a></li>
                 {% endif %}
-              {% if user.is_authenticated %}  <li><a href="{% url 'usuario:logout_user' %}">Logout</a></li> {% endif %}
+                {% if user.is_authenticated %}  
+                <a href="{% url 'tarefas:adicionar' %}">Criar tarefa</a>
+                <a href="{% url 'usuario:logout_user' %}">Logout</a>
+                {% endif %}
             </ul>
         </nav>
     </header>
