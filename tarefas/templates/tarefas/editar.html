@@ -1,12 +1,24 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block body %}
 
 <form action="{% url 'tarefas:editar' id_item=item.id %}" method="POST">{% csrf_token %}
-    <input type="text" name="nome" id="nome" value="{{item.nome}}"> 
-    <textarea name="descricao" id="descricao" cols="30" rows="10">{{item.descricao}}</textarea>
-    <input type="checkbox" name="realizada" id="realizada" checked>
-    <button type="submit">Editar</button>
+    <div class="form-wrap">
+        <div class="form-group">
+            <label for="nome">Tarefa:</label>
+            <input type="text" class="form-control" name="nome" id="nome" value="{{item.nome}}"> 
+        </div>
+        <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" class="form-control" id="descricao" cols="30" rows="10">{{item.descricao}}</textarea>
+        </div>
+        <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" name="realizada" id="realizada" checked>
+        <label class="form-check-label" for="realizada">Realizada?</label>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg">Editar</button>
+    </div>
 </form>
 
 {% endblock %}

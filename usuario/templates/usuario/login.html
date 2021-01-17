@@ -1,12 +1,45 @@
 {% extends 'layout.html' %}
 
+{% load bootstrap %}
+{% load static %}
+
 {% block body %}
 
-<form action="{% url 'usuario:login_user' %}" method="POST">
+<!-- <form action="{% url 'usuario:login_user' %}" method="POST">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Login</button>
-</form>
+    <div class="form-group" >
+    {{ form.nome|bootstrap }}
+    {{ form.senha|bootstrap }}
+    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+    </div>
+</form> -->
+<div class="container">
+<div class="login-content">
+    <form action="{% url 'usuario:login_user' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group form-wrap">
+        <h2 class="title">Bem vindo</h2>
+           <div class="input-div one">
+              <div class="i">
+                      <i class="fas fa-user"></i>
+              </div>
+              <div class="div">
+                      {{ form.nome|bootstrap }}
+              </div>
+           </div>
+           <div class="input-div pass">
+              <div class="i"> 
+                   <i class="fas fa-lock"></i>
+              </div>
+              <div class="div">
+                   {{ form.senha|bootstrap }}
+           </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        </div>
+    </form>
+</div>
+</div>
 
 {% if mensagem %}
     <strong>{{ mensagem }}</strong> 

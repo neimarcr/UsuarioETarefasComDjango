@@ -7,7 +7,7 @@ class ListaTarefas(models.Model):
     nome = models.CharField(max_length=64)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="usuario_lista", null=True)
     descricao = models.TextField(max_length=300)
-    realizada = models.BooleanField(null=True)
+    realizada = models.BooleanField(null=True, verbose_name="Realizada?")
 
 
     def __str__(self) -> str:

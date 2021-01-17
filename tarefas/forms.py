@@ -9,8 +9,11 @@ class ListaTarefasForm(ModelForm):
         model = ListaTarefas
         fields = ['nome', 'descricao', 'realizada']
         widgets = {
-            'realizada': widgets.CheckboxInput
+            'realizada': widgets.CheckboxInput(attrs={'class': 'form-check-input'} ),
+            'nome': widgets.TextInput(attrs={'class': 'form-control'}),
+            'descricao': widgets.Textarea(attrs={'class': 'form-control'})
         }
+
 
 # class DeletarTarefa(DeleteView):
 #     model = ListaTarefas
