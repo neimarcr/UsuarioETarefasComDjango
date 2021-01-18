@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meuapp</title>
+    <title>MeuApp</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">	
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -12,7 +12,8 @@
     <header>
     	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container-fluid">
-        	<a href="{% url 'usuario:index' %}" class="navbar-brand">Logo</a>
+        	<a href="{% url 'usuario:index' %}" class="navbar-brand">
+				{% if not user.is_authenticated %}<h2>Início</h2> {% else %}<h2>{{user.username}}</h2> {% endif %}</a>
           	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">				
             	<span class="navbar-toggler-icon"></span>
           	</button>
@@ -23,8 +24,8 @@
 				<li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
 				<li class="nav-item"><a class="nav-link" href="{% url 'usuario:cadastrar_usuario' %}">Cadastre-se!</a></li>
 				<li class="nav-item"><a class="nav-link" href="{% url 'usuario:login_user' %}">Login</a></li>
-				{% endif %}
-				{% if user.is_authenticated %}  
+				{% else %}
+				<li class="nav-item"><a class="nav-link" href="{% url 'tarefas:home' %}">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="{% url 'tarefas:adicionar' %}">Criar tarefa</a></li>
 				<li class="nav-item"><a class="nav-link" href="{% url 'usuario:logout_user' %}">Logout</a></li>
 				{% endif %}
@@ -41,29 +42,29 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="img/w3newbie.png" alt="">
+					<img src="{% static 'img/w3newbie.png' %}" alt="">
 					<hr class="light">
-					<p>555-555-5555</p>
+					<p>(49)99999-9999</p>
 					<p>email@myemail.com</p>
-					<p>100 street name</p>
-					<p>City, State, 00000</p>
+					<p>rua tal, bairo tal, nº 000</p>
+					<p>Lages-SC,88500-000</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5>Our hours</h5>
+					<h5>Nossos horários</h5>
 					<hr class="light">
-					<p>Monday: 9am - 5pm</p>
-					<p>Saturday: 10am - 4pm</p>
-					<p>Sunday: closed</p>
+					<p>Segunda à Sexta: 9:00 - 17:00</p>
+					<p>Sábado: 10:00 - 16:00</p>
+					<p>Domingo: fechado</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5>Service Area</h5>
+					<h5>Lojas</h5>
 					<hr class="light">
-					<p>City, State, 00000</p>
-					<p>City, State, 00000</p>
-					<p>City, State, 00000</p>
-					<p>City, State, 00000</p>
+					<p>Cidade, Estado, 99000-000</p>
+					<p>Cidade, Estado, 99000-000</p>
+					<p>Cidade, Estado, 99000-000</p>
+					<p>Cidade, Estado, 99000-000</p>
 				</div>
 				<div class="col-12">
 					<hr class="light-100">
@@ -75,5 +76,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="{% static 'js/site.js' %}"></script>
 </body>
 </html>

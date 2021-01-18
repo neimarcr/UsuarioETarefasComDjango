@@ -5,16 +5,14 @@
 
 {% block body %}
 
-<!-- <form action="{% url 'usuario:login_user' %}" method="POST">
-    {% csrf_token %}
-    <div class="form-group" >
-    {{ form.nome|bootstrap }}
-    {{ form.senha|bootstrap }}
-    <button type="submit" class="btn btn-primary btn-lg">Login</button>
-    </div>
-</form> -->
+
+
 <div class="container">
 <div class="login-content">
+<div class="card m-5">
+    {% if mensagem %}
+    <strong class="alert alert-danger" role="alert">{{ mensagem }}</strong> 
+    {% endif %}
     <form action="{% url 'usuario:login_user' %}" method="POST">
         {% csrf_token %}
         <div class="form-group form-wrap">
@@ -40,10 +38,9 @@
     </form>
 </div>
 </div>
+</div>
 
-{% if mensagem %}
-    <strong>{{ mensagem }}</strong> 
-{% endif %}
+
 
 
 {% endblock %}

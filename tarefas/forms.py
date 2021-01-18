@@ -10,8 +10,7 @@ class ListaTarefasForm(ModelForm):
         fields = ['nome', 'descricao', 'realizada']
         widgets = {
             'realizada': widgets.CheckboxInput(attrs={'class': 'form-check-input'} ),
-            'nome': widgets.TextInput(attrs={'class': 'form-control'}),
-            'descricao': widgets.Textarea(attrs={'class': 'form-control'})
+
         }
 
 

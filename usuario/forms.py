@@ -16,5 +16,5 @@ class UsuarioForm(forms.Form):
             raise forms.ValidationError("Senhas não são iguais")
 
 class LoginForm(forms.Form):
-    nome = forms.CharField(label="Nome", max_length=64, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    senha = forms.CharField(label="Senha", min_length=8, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    nome = forms.CharField(label="Nome", max_length=64)
+    senha = forms.CharField(label="Senha", min_length=8)

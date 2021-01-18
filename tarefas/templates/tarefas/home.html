@@ -2,9 +2,42 @@
 {% load static %}
 {% block body %}
 
-<div class="container-fluid col-6 my-5 mx-auto form-wrap">
+<div class="container-fluid col-sm-12 col-lg-8 my-5 mx-auto form-wrap">
 {% if lista %}
+<div class="table-responsive">
     <h1>Tarefas:</h1>
+    <table class="table table-striped table-dark">
+        <caption>Tarefas</caption>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tarefa</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Realizada?</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
+            </tr>
+            <tbody>
+                {% for item in lista %}
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.descricao}}</td>
+                    <td>{% if item.realizada %} Sim {% else %} Não {% endif %}</td>
+                    <td><a href="{% url 'tarefas:editar' id_item=item.id %}" class="btn btn-secondary btn-sm "><i class="fas fa-edit"></i></a></td>
+                    <td>
+                        <form action="{% url 'tarefas:deletar_tarefa' id_item=item.id %}" method="POST">{% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+    <!-- <h1>Tarefas:</h1>
     <ul>
         {% for item in lista %}
             <li>Tarefa: {{ item.nome }}</li>
@@ -16,7 +49,7 @@
             </form>
             <hr>
         {% endfor %}
-    </ul>
+    </ul> -->
 {% else %}
     <h1>Parabéns</h1>
     <h2>Não há nenhuma tarefa cadastrada</h2>

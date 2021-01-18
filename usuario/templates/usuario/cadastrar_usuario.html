@@ -6,14 +6,9 @@
 
 {% block body %}
     <form action="{% url 'usuario:cadastrar_usuario' %}" method="POST">{% csrf_token %}
-        <div class="form-wrap">
-        <div class="form-group">
+        <div class="form-wrap" id="form-cadastro">
             {{ form|bootstrap }}
-            {% if form.non_field_errors %}
-                <p>{{ login.non_field_errors }}</p>
-            {% endif %}
-            <button class="btn btn-success btn-lg" type="submit">Enviar</button>
-        </div>
+        <button class="btn btn-success btn-lg" id="btn-cadastrar-usuario" type="submit">Enviar</button>
         </div>
     </form>
 {% endblock %}
