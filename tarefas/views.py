@@ -16,8 +16,6 @@ def home(request):
 
 @login_required
 def adicionar(request):
-    # if not request.user.is_authenticated:
-    #     return redirect("usuario:index")
 
     if request.method == 'POST':
         nome = request.POST['nome']

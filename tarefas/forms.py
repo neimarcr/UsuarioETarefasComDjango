@@ -14,6 +14,3 @@ class ListaTarefasForm(ModelForm):
         }
 
 
-# class DeletarTarefa(DeleteView):
-#     model = ListaTarefas
-#     success_url = reverse_lazy("tarefas:home")

@@ -17,4 +17,4 @@ class UsuarioForm(forms.Form):
 
 class LoginForm(forms.Form):
     nome = forms.CharField(label="Nome", max_length=64)
-    senha = forms.CharField(label="Senha", min_length=8)
+    senha = forms.CharField(label="Senha", min_length=8, widget=forms.PasswordInput())
